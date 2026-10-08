@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Anjali ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@500&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+/* ===== PERSONALIZATION: edit these ===== */
+const birthdayConfig = {
+  name: "Anjali",
+  senderName: "Your Name",
+  birthdayMessage: "Happy Birthday ❤️",
+  musicFile: "music/birthday.mp3",          // put your song in /music
+  photos: [                                  // put photos in /images, edit captions
+    { src: "images/anjali1.jpg", caption: "A smile worth remembering" },
+    { src: "images/anjali2.jpg", caption: "One of my favourite days" },
+    { src: "images/anjali3.jpg", caption: "Pure happiness" },
+    { src: "images/anjali4.jpg", caption: "Moments that stayed" }
+  ]
+};
+</script>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<canvas id="fx"></canvas>
+<div id="glow"></div>
+
+<!-- OPENING SCREEN -->
+<div id="intro">
+  <p class="il" id="i1">Hey <span class="n"></span>...</p>
+  <p class="il" id="i2">Today isn't just another day.</p>
+  <p class="il" id="i3">Today is the day someone truly special came into this world.</p>
+  <h1 class="il" id="i4">Happy Birthday, <span class="n"></span> ❤️</h1>
+  <button class="btn il" id="begin">Begin Your Surprise ✨</button>
+</div>
+
+<div id="progress"></div>
+<nav id="nav">
+  <button id="burger" aria-label="Menu">☰</button>
+  <ul id="menu">
+    <li><a href="#home">Home</a></li><li><a href="#letter">Letter</a></li>
+    <li><a href="#wishes">Wishes</a></li><li><a href="#memories">Memories</a></li>
+    <li><a href="#gallery">Gallery</a></li><li><a href="#surprise">Surprise</a></li>
+    <li><a href="#final">Final</a></li>
+  </ul>
+</nav>
+<button id="music" aria-label="Music">🎵 <span>Play our little soundtrack</span></button>
+<audio id="audio" loop preload="none"></audio>
+
+<main>
+<section id="home" class="full">
+  <div class="cake" aria-hidden="true"><i class="fl"></i><i class="fl f2"></i><i class="fl f3"></i><div class="t1"></div><div class="t2"></div><div class="t3"></div></div>
+  <h2 class="big">Happy Birthday, <span class="n"></span> ❤️</h2>
+  <p class="sub">To someone who is much more than just a friend.</p>
+  <a href="#letter" class="hint">There's something waiting for you ↓</a>
+</section>
+
+<section id="letter" class="pad">
+  <h2 class="h">A Little Letter For You 💌</h2>
+  <!-- LETTER TEXT: edit the `letter` array in script.js -->
+  <div class="paper glass"><div id="lt"></div><p class="sig" id="sig"></p></div>
+</section>
+
+<section id="wishes" class="pad">
+  <h2 class="h">Things I Wish For You</h2>
+  <p class="hint2">Tap a card ✨ (edit wishes in script.js → wishCards)</p>
+  <div class="grid" id="wishGrid"></div>
+
+  <h2 class="h" style="margin-top:5rem">If I Could Give You...</h2>
+  <div class="grid" id="giveGrid"></div>
+</section>
+
+<section id="memories" class="pad">
+  <h2 class="h">Our Little Story</h2>
+  <div class="tl">
+    <!-- EDIT EACH MEMORY: change the <h3> title and <p> text below with your real memories -->
+    <div class="ti reveal"><h3>That first conversation...</h3><p>[Write the moment it all began.]</p></div>
+    <div class="ti reveal"><h3>That random laugh...</h3><p>[Write about a laugh you'll never forget.]</p></div>
+    <div class="ti reveal"><h3>That moment I realized you're different...</h3><p>[Write what made you notice how special she is.]</p></div>
+    <div class="ti reveal"><h3>All those little conversations...</h3><p>[Write about the talks that mattered.]</p></div>
+    <div class="ti reveal"><h3>Things that became memories without us noticing...</h3><p>[Write the small things that became big.]</p></div>
+  </div>
+
+  <h2 class="h" style="margin-top:5rem">Things I Admire About You</h2>
+  <div class="grid" id="admGrid"></div>
+</section>
+
+<section id="gallery" class="pad">
+  <h2 class="h">Gallery</h2>
+  <!-- PHOTOS: edit birthdayConfig.photos at top of this file; add more entries freely -->
+  <div class="gal" id="galGrid"></div>
+</section>
+
+<section id="surprise" class="pad center">
+  <h2 class="h"><span class="n"></span>... I saved something special for you.</h2>
+  <button class="btn" id="openGift">Open It 🎁</button>
+  <div id="gift"><div class="box"><div class="lid"></div><div class="body"></div></div>
+    <p class="gm" id="g1">Your biggest gift isn't something I can wrap.</p>
+    <p class="gm" id="g2">It's simply my wish that life gives you more reasons to smile than you ever expected.</p>
+  </div>
+
+  <h2 class="h" style="margin-top:5rem">Wish Generator</h2>
+  <p id="wishOut" class="wout">Tap below ✨</p>
+  <button class="btn" id="newWish">Give Me Another Wish ✨</button>
+</section>
+
+<section id="know" class="pad center">
+  <h2 class="h">A Few Things You Should Know</h2>
+  <div id="deserve"></div>
+</section>
+
+<section id="sky" class="skyw">
+  <canvas id="skyc"></canvas>
+  <div class="skytext"><p id="s1">If I could write one message across the sky tonight...</p><h2 id="s2">Happy Birthday, <span class="n"></span>.</h2><small>Tap the sky ✨</small></div>
+</section>
+
+<section id="final" class="pad center">
+  <h2 class="h">Before You Leave...</h2>
+  <!-- FINAL MESSAGE: edit `finalLines` in script.js -->
+  <div id="fl" class="paper glass"></div>
+  <p class="big2" id="ol">One last thing...</p>
+  <p class="big2" id="pr">Promise me you'll smile today. 😊</p>
+  <button class="btn" id="again">Celebrate Again 🎉</button>
+</section>
+</main>
+<img id="dummy" alt="" hidden>
+<div id="lb"><img alt=""><p></p></div>
+<script src="script.js"></script>
+</body>
+</html>
